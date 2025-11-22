@@ -1,0 +1,41 @@
+{% extends 'main_app/base.html' %}
+{% block content %}
+
+<h1>Create Post</h1>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+
+        <form class="d-flex flex-column gap-3" action="{% url 'main_app:create_post_view' %}" method="POST">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <input 
+                type="text" 
+                name="title" 
+                placeholder="Title" 
+                class="form-control"
+                required
+            />
+
+            <!-- Content -->
+            <textarea 
+                name="content" 
+                placeholder="Content" 
+                class="form-control" 
+                rows="4"
+                required></textarea>
+
+            <!-- is_published -->
+            <select name="is_published" class="form-select">
+                <option value="True">Published</option>
+                <option value="False">Not Published</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
